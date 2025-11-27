@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
-import heroImage from "@/assets/hero-eco-kids-new.jpg";
+import heroImage from "@/assets/hero-eco-adventure.jpg";
 import DecorativeBlobs from "@/components/DecorativeBlobs";
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative py-12 md:py-16 lg:py-20 px-4 overflow-hidden">
+    <section className="relative py-12 md:py-16 lg:py-20 px-4 overflow-hidden flex items-center min-h-screen">
       <div className="absolute inset-0 bg-gradient-to-br from-eco-green/10 via-eco-blue/10 to-eco-yellow/10 -z-10" />
       <DecorativeBlobs />
       

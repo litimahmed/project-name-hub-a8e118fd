@@ -122,6 +122,20 @@ All colors MUST be HSL.
   }
 }
 
+/* Snap scroll container */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+}
+
 /* Story page flip styles */
 .stf__parent {
   margin: auto !important;
