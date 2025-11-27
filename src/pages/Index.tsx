@@ -102,39 +102,39 @@ const Index = () => {
         <AboutUs />
       </SnapSection>
       
-      <section id="stories-section" className="relative py-12 px-4 overflow-hidden">
-        {/* Subtle blobs for the story section */}
-        <div className="absolute top-10 left-1/4 w-72 h-72 bg-eco-orange/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-eco-purple/15 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Choose Your Story
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Click on any book to start your recycling adventure!
-            </p>
-          </div>
+      <SnapSection id="stories-section" index={3}>
+        <section className="relative py-12 px-4 overflow-hidden flex items-center min-h-screen">
+          {/* Subtle blobs for the story section */}
+          <div className="absolute top-10 left-1/4 w-72 h-72 bg-eco-orange/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-eco-purple/15 rounded-full blur-3xl pointer-events-none" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {books.map((book) => (
-              <BookCard
-                key={book.id}
-                title={book.title}
-                image={book.image}
-                color={book.color}
-                readingTime={book.readingTime}
-                category={book.category}
-                description={book.description}
-                onClick={() => handleBookClick(book.id)}
-              />
-            ))}
+          <div className="container mx-auto max-w-7xl relative z-10">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                Choose Your Story
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Click on any book to start your recycling adventure!
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {books.map((book) => (
+                <BookCard
+                  key={book.id}
+                  title={book.title}
+                  image={book.image}
+                  color={book.color}
+                  readingTime={book.readingTime}
+                  category={book.category}
+                  description={book.description}
+                  onClick={() => handleBookClick(book.id)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-      
-      <ContactSection />
+        </section>
+      </SnapSection>
       
       <Footer />
     </div>
