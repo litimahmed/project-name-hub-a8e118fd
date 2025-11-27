@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'story': ['Fredoka', 'Comic Sans MS', 'cursive'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +49,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        eco: {
+          green: "hsl(var(--eco-green))",
+          blue: "hsl(var(--eco-blue))",
+          yellow: "hsl(var(--eco-yellow))",
+          orange: "hsl(var(--eco-orange))",
+          purple: "hsl(var(--eco-purple))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
