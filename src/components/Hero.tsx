@@ -1,138 +1,137 @@
 import { Button } from "@/components/ui/button";
+import { BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
-import { Sparkles, Leaf, Recycle } from "lucide-react";
 import heroImage from "@/assets/hero-eco-adventure.jpg";
+import DecorativeBlobs from "@/components/DecorativeBlobs";
 
 const Hero = () => {
   const scrollToStories = () => {
-    const element = document.getElementById("stories-section");
-    element?.scrollIntoView({ behavior: "smooth" });
+    const storiesSection = document.getElementById('stories-section');
+    storiesSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-eco-green/10 via-background to-eco-blue/10">
-      {/* Animated background blobs */}
-      <motion.div 
-        className="absolute top-20 left-10 w-72 h-72 bg-eco-yellow/30 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3] 
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute bottom-20 right-10 w-96 h-96 bg-eco-purple/25 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.25, 0.4, 0.25] 
-        }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
+    <section className="relative py-12 md:py-16 lg:py-20 px-4 overflow-hidden flex items-center min-h-screen">
+      <div className="absolute inset-0 bg-gradient-to-br from-eco-green/10 via-eco-blue/10 to-eco-yellow/10 -z-10" />
+      <DecorativeBlobs />
       
-      {/* Floating icons */}
-      <motion.div
-        className="absolute top-32 right-1/4"
-        animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-        transition={{ duration: 6, repeat: Infinity }}
-      >
-        <Leaf className="w-12 h-12 text-eco-green opacity-40" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-1/3 left-1/4"
-        animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-        transition={{ duration: 7, repeat: Infinity, delay: 1 }}
-      >
-        <Recycle className="w-16 h-16 text-eco-blue opacity-30" />
-      </motion.div>
-      
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-left space-y-6"
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left Column - Content */}
+          <motion.div 
+            className="space-y-6 text-center md:text-left"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-eco-green/10 px-4 py-2 rounded-full border border-eco-green/30"
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
             >
-              <Sparkles className="w-4 h-4 text-eco-green" />
-              <span className="text-sm font-semibold text-eco-green">Interactive Learning</span>
+              Let's Save the Planet Together!
+            </motion.h1>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              Join our amazing recycling adventures and learn how to become an Eco Hero! Every story teaches you something special about taking care of our Earth.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-wrap gap-3 justify-center md:justify-start"
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 }
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-eco-green hover:bg-eco-green/90 text-white font-semibold text-lg px-10 py-6 rounded-xl shadow-sm hover:shadow-md transition-all"
+                  onClick={scrollToStories}
+                >
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Read a Story
+                </Button>
+              </motion.div>
             </motion.div>
             
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="gradient-text">Magical Stories</span>
-              <br />
-              <span className="text-foreground">About Recycling &</span>
-              <br />
-              <span className="text-foreground">Our </span>
-              <span className="text-eco-blue">Planet</span> 🌍
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Join our eco-heroes on exciting adventures! Learn how recycling saves the planet through fun, interactive stories designed for young explorers.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <motion.div 
+              className="flex flex-wrap gap-3 justify-center md:justify-start pt-4"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { 
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1 }
+                }
+              }}
+            >
+              <motion.div 
+                className="group px-5 py-2.5 rounded-lg bg-background border-2 border-eco-green/30 text-foreground font-medium text-sm hover:border-eco-green/60 transition-all cursor-default"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0 }
+                }}
+                whileHover={{ scale: 1.05, borderColor: "hsl(147 60% 45% / 0.6)" }}
               >
-                <Button
-                  size="lg"
-                  onClick={scrollToStories}
-                  className="bg-gradient-to-r from-eco-green to-eco-green/80 hover:from-eco-green/90 hover:to-eco-green/70 text-white font-bold text-lg px-10 py-7 rounded-full shadow-xl hover:shadow-2xl transition-all animate-pulse-glow"
-                >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Start Reading
-                </Button>
+                <span className="text-eco-green">✦</span> Fun Stories
               </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div 
+                className="group px-5 py-2.5 rounded-lg bg-background border-2 border-eco-blue/30 text-foreground font-medium text-sm hover:border-eco-blue/60 transition-all cursor-default"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0 }
+                }}
+                whileHover={{ scale: 1.05, borderColor: "hsl(198 70% 55% / 0.6)" }}
               >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-eco-blue text-eco-blue hover:bg-eco-blue hover:text-white font-bold text-lg px-10 py-7 rounded-full transition-all shadow-lg"
-                >
-                  Learn More
-                </Button>
+                <span className="text-eco-blue">✦</span> Learn Recycling
               </motion.div>
-            </div>
+              <motion.div 
+                className="group px-5 py-2.5 rounded-lg bg-background border-2 border-eco-yellow/30 text-foreground font-medium text-sm hover:border-eco-yellow/60 transition-all cursor-default"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0 }
+                }}
+                whileHover={{ scale: 1.05, borderColor: "hsl(48 100% 60% / 0.6)" }}
+              >
+                <span className="text-eco-yellow">✦</span> Save Earth
+              </motion.div>
+            </motion.div>
           </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+          {/* Right Column - Image */}
+          <motion.div 
+            className="relative rounded-3xl overflow-hidden"
+            variants={{
+              hidden: { opacity: 0, scale: 0.9, rotate: -5 },
+              visible: { 
+                opacity: 1, 
+                scale: 1, 
+                rotate: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+              }
+            }}
+            whileHover={{ scale: 1.02 }}
           >
-            <motion.div
-              animate={{ rotate: [0, 5, 0, -5, 0] }}
-              transition={{ duration: 8, repeat: Infinity }}
-            >
-              <img
-                src={heroImage}
-                alt="Children learning about recycling"
-                className="rounded-3xl shadow-2xl w-full animate-float-slow"
-              />
-            </motion.div>
-            
-            {/* Decorative elements around image */}
-            <motion.div
-              className="absolute -top-6 -right-6 w-20 h-20 bg-eco-yellow rounded-full opacity-60"
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 4, repeat: Infinity }}
-            />
-            <motion.div
-              className="absolute -bottom-8 -left-8 w-24 h-24 bg-eco-purple/50 rounded-full opacity-50"
-              animate={{ scale: [1.3, 1, 1.3] }}
-              transition={{ duration: 5, repeat: Infinity }}
+            <img 
+              src={heroImage} 
+              alt="Eco Heroes - Happy cartoon characters learning about recycling" 
+              className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
             />
           </motion.div>
         </div>

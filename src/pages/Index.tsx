@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import BookCard from "@/components/BookCard";
 import DecorativeBlobs from "@/components/DecorativeBlobs";
 import SnapSection from "@/components/SnapSection";
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 
 // Import book cover images
@@ -104,70 +103,35 @@ const Index = () => {
       </SnapSection>
       
       <SnapSection id="stories-section" index={3}>
-        <section className="relative py-12 px-4 overflow-hidden flex items-center min-h-screen bg-gradient-to-br from-eco-orange/5 via-background to-eco-green/5">
-          {/* Animated background blobs */}
-          <motion.div 
-            className="absolute top-10 left-1/4 w-72 h-72 bg-eco-orange/20 rounded-full blur-3xl pointer-events-none"
-            animate={{ 
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.35, 0.2] 
-            }}
-            transition={{ duration: 8, repeat: Infinity }}
-          />
-          <motion.div 
-            className="absolute bottom-20 right-1/4 w-64 h-64 bg-eco-purple/20 rounded-full blur-3xl pointer-events-none"
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              opacity: [0.2, 0.3, 0.2] 
-            }}
-            transition={{ duration: 10, repeat: Infinity }}
-          />
+        <section className="relative py-12 px-4 overflow-hidden flex items-center min-h-screen">
+          {/* Subtle blobs for the story section */}
+          <div className="absolute top-10 left-1/4 w-72 h-72 bg-eco-orange/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-eco-purple/15 rounded-full blur-3xl pointer-events-none" />
           
           <div className="container mx-auto max-w-7xl relative z-10">
-            <motion.div 
-              className="text-center mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-6xl font-bold mb-4">
-                <span className="gradient-text">Choose Your</span>
-                <br />
-                <span className="text-foreground">Adventure 📚</span>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                Choose Your Story
               </h2>
-              <p className="text-muted-foreground text-lg md:text-xl">
+              <p className="text-muted-foreground text-lg">
                 Click on any book to start your recycling adventure!
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.3, staggerChildren: 0.1 }}
-            >
-              {books.map((book, index) => (
-                <motion.div
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {books.map((book) => (
+                <BookCard
                   key={book.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: 0.1 * index }}
-                >
-                  <BookCard
-                    title={book.title}
-                    image={book.image}
-                    color={book.color}
-                    readingTime={book.readingTime}
-                    category={book.category}
-                    description={book.description}
-                    onClick={() => handleBookClick(book.id)}
-                  />
-                </motion.div>
+                  title={book.title}
+                  image={book.image}
+                  color={book.color}
+                  readingTime={book.readingTime}
+                  category={book.category}
+                  description={book.description}
+                  onClick={() => handleBookClick(book.id)}
+                />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
       </SnapSection>

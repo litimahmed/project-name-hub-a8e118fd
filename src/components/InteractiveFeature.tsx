@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Sparkles, BookOpen, Heart } from "lucide-react";
 import { motion } from "framer-motion";
-import { BookOpen, Target, Star, Palette } from "lucide-react";
 import interactiveImage from "@/assets/interactive-storybook.jpg";
 
 interface InteractiveFeatureProps {
@@ -8,134 +8,183 @@ interface InteractiveFeatureProps {
 }
 
 const InteractiveFeature = ({ onDiscoverClick }: InteractiveFeatureProps) => {
-  const features = [
-    { icon: Palette, text: "Beautiful illustrations that captivate young minds", color: "eco-orange" },
-    { icon: Target, text: "Interactive quizzes to test their knowledge", color: "eco-blue" },
-    { icon: Star, text: "Fun rewards and achievements for completing stories", color: "eco-yellow" },
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-eco-blue/10 via-background to-eco-purple/10">
-      {/* Animated background elements */}
-      <motion.div 
-        className="absolute top-20 right-20 w-80 h-80 bg-eco-orange/30 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.3, 1],
-          x: [0, 20, 0],
-          opacity: [0.3, 0.5, 0.3] 
-        }}
-        transition={{ duration: 9, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute bottom-20 left-20 w-72 h-72 bg-eco-green/25 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1.3, 1, 1.3],
-          y: [0, -20, 0],
-          opacity: [0.25, 0.45, 0.25] 
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
+    <section className="py-20 px-4 relative overflow-hidden flex items-center min-h-screen">
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-eco-blue/5 via-eco-green/5 to-eco-purple/5" />
       
-      {/* Floating book icon */}
-      <motion.div
-        className="absolute top-1/4 right-1/3"
-        animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 5, repeat: Infinity }}
-      >
-        <BookOpen className="w-14 h-14 text-eco-purple opacity-30" />
-      </motion.div>
+      {/* Animated decorative elements */}
+      <div className="absolute top-20 left-10 w-2 h-2 bg-eco-green rounded-full animate-pulse" />
+      <div className="absolute top-40 right-20 w-3 h-3 bg-eco-blue rounded-full animate-pulse delay-75" />
+      <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-eco-yellow rounded-full animate-pulse delay-150" />
       
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-            className="relative order-2 md:order-1"
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Image with modern styling */}
+          <motion.div 
+            className="order-2 lg:order-1 relative"
+            variants={{
+              hidden: { opacity: 0, x: -60 },
+              visible: { 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+              }
+            }}
           >
-            <motion.div
-              whileHover={{ scale: 1.02, rotate: 2 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <img
-                src={interactiveImage}
-                alt="Interactive storybook experience"
-                className="rounded-3xl shadow-2xl w-full animate-float"
-              />
-            </motion.div>
-            
-            {/* Decorative sparkles */}
-            <motion.div
-              className="absolute -top-4 -left-4 w-16 h-16 bg-eco-blue/40 rounded-full"
-              animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            <motion.div
-              className="absolute -bottom-6 -right-6 w-20 h-20 bg-eco-purple/30 rounded-full"
-              animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity }}
-            />
+            <div className="relative">
+              {/* Glow effect behind image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-eco-green/20 to-eco-blue/20 rounded-3xl blur-2xl scale-105" />
+              
+              {/* Main image container */}
+              <motion.div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.03, rotate: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={interactiveImage} 
+                  alt="Interactive educational recycling stories with magical elements" 
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
+              
+              {/* Floating badges */}
+              <motion.div 
+                className="absolute -top-6 -right-6 bg-background border-2 border-eco-green rounded-2xl px-6 py-3 shadow-lg"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-eco-green" />
+                  <span className="font-bold text-foreground">Interactive</span>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -bottom-4 -left-4 bg-background border-2 border-eco-blue rounded-2xl px-6 py-3 shadow-lg"
+                animate={{
+                  y: [0, 10, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <Heart className="w-5 h-5 text-eco-blue fill-eco-blue" />
+                  <span className="font-bold text-foreground">Kids Love It</span>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-left space-y-6 order-1 md:order-2"
+          {/* Right side - Content */}
+          <motion.div 
+            className="order-1 lg:order-2 space-y-8"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.3 }}
+            {/* Badge */}
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-eco-green/10 to-eco-blue/10 border border-eco-green/20 rounded-full"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 }
+              }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
-                <span className="gradient-text">Interactive Stories</span>
-                <br />
-                <span className="text-foreground">That Teach &</span>
-                <br />
-                <span className="text-foreground">Entertain 🎪</span>
-              </h2>
+              <div className="w-2 h-2 bg-eco-green rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-eco-green uppercase tracking-wide">
+                Interactive Learning
+              </span>
             </motion.div>
             
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Every story comes alive with colorful illustrations, fun quizzes, and interactive elements that make learning about recycling an adventure!
-            </p>
-            
-            <motion.ul className="space-y-4 pt-2">
-              {features.map((feature, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer"
-                >
-                  <div className={`p-2 rounded-lg bg-${feature.color}/20`}>
-                    <feature.icon className={`w-6 h-6 text-${feature.color}`} />
-                  </div>
-                  <span className="text-lg font-medium text-foreground pt-1">{feature.text}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="pt-4"
+            {/* Main heading */}
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
             >
-              <Button
-                size="lg"
-                onClick={onDiscoverClick}
-                className="bg-gradient-to-r from-eco-blue to-eco-purple hover:from-eco-blue/90 hover:to-eco-purple/90 text-white font-bold text-lg px-10 py-7 rounded-full shadow-xl hover:shadow-2xl transition-all"
+              Stories That Make
+              <span className="block mt-2 bg-gradient-to-r from-eco-green to-eco-blue bg-clip-text text-transparent">
+                Learning Fun
+              </span>
+            </motion.h2>
+            
+            {/* Description */}
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              Our interactive stories transform recycling education into magical adventures. 
+              Kids make choices, solve eco-puzzles, and discover how their actions can 
+              create positive change for our planet.
+            </motion.p>
+            
+            {/* Feature list */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-background border border-border hover:border-eco-green/50 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-eco-green/10 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 h-5 text-eco-green" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">6+ Stories</h3>
+                  <p className="text-sm text-muted-foreground">Unique adventures</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-background border border-border hover:border-eco-blue/50 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-eco-blue/10 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-5 h-5 text-eco-blue" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Interactive</h3>
+                  <p className="text-sm text-muted-foreground">Make choices</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* CTA Button */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 }
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <BookOpen className="w-5 h-5 mr-2" />
-                Discover Stories
-              </Button>
+                <Button 
+                  onClick={onDiscoverClick}
+                  size="lg"
+                  className="bg-gradient-to-r from-eco-green to-eco-blue hover:from-eco-green/90 hover:to-eco-blue/90 text-white font-bold text-lg px-10 py-7 rounded-2xl shadow-lg hover:shadow-xl transition-all group"
+                >
+                  <BookOpen className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  Explore All Stories
+                </Button>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
