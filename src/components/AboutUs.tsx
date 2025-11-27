@@ -2,7 +2,7 @@ import aboutUsImage from "@/assets/about-us-new.jpg";
 
 const AboutUs = () => {
   return (
-    <section id="about-section" className="relative py-16 px-4 overflow-hidden">
+    <section id="about-section" className="relative py-16 px-4 overflow-hidden flex items-center min-h-screen">
       {/* Decorative background blobs */}
       <div className="absolute top-20 right-1/4 w-80 h-80 bg-eco-green/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-eco-blue/10 rounded-full blur-3xl pointer-events-none" />

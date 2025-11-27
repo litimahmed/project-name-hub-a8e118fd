@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, BookOpen, Heart } from "lucide-react";
-import interactiveImage from "@/assets/interactive-feature-new.png";
+import interactiveImage from "@/assets/interactive-storybook.jpg";
 
 interface InteractiveFeatureProps {
   onDiscoverClick: () => void;
@@ -8,7 +8,7 @@ interface InteractiveFeatureProps {
 
 const InteractiveFeature = ({ onDiscoverClick }: InteractiveFeatureProps) => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-20 px-4 relative overflow-hidden flex items-center min-h-screen">
       {/* Modern gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-eco-blue/5 via-eco-green/5 to-eco-purple/5" />
       

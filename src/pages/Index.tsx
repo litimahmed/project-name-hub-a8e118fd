@@ -87,13 +87,21 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header books={books} onBookClick={handleBookClick} />
-      <div id="hero-section">
-        <Hero />
+      
+      {/* Unified snap-scroll section for Hero, Interactive, and About */}
+      <div className="snap-container">
+        <div className="snap-section" id="hero-section">
+          <Hero />
+        </div>
+        
+        <div className="snap-section">
+          <InteractiveFeature onDiscoverClick={scrollToStories} />
+        </div>
+        
+        <div className="snap-section">
+          <AboutUs />
+        </div>
       </div>
-      
-      <InteractiveFeature onDiscoverClick={scrollToStories} />
-      
-      <AboutUs />
       
       <section id="stories-section" className="relative py-12 px-4 overflow-hidden">
         {/* Subtle blobs for the story section */}
