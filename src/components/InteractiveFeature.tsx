@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, BookOpen, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 import interactiveImage from "@/assets/interactive-storybook.jpg";
 
 interface InteractiveFeatureProps {
@@ -20,61 +21,126 @@ const InteractiveFeature = ({ onDiscoverClick }: InteractiveFeatureProps) => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Image with modern styling */}
-          <div className="order-2 lg:order-1 relative">
+          <motion.div 
+            className="order-2 lg:order-1 relative"
+            variants={{
+              hidden: { opacity: 0, x: -60 },
+              visible: { 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+              }
+            }}
+          >
             <div className="relative">
               {/* Glow effect behind image */}
               <div className="absolute inset-0 bg-gradient-to-br from-eco-green/20 to-eco-blue/20 rounded-3xl blur-2xl scale-105" />
               
               {/* Main image container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+              <motion.div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.03, rotate: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img 
                   src={interactiveImage} 
                   alt="Interactive educational recycling stories with magical elements" 
                   className="w-full h-auto object-contain"
                 />
-              </div>
+              </motion.div>
               
               {/* Floating badges */}
-              <div className="absolute -top-6 -right-6 bg-background border-2 border-eco-green rounded-2xl px-6 py-3 shadow-lg animate-fade-in">
+              <motion.div 
+                className="absolute -top-6 -right-6 bg-background border-2 border-eco-green rounded-2xl px-6 py-3 shadow-lg"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-eco-green" />
                   <span className="font-bold text-foreground">Interactive</span>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="absolute -bottom-4 -left-4 bg-background border-2 border-eco-blue rounded-2xl px-6 py-3 shadow-lg animate-fade-in delay-150">
+              <motion.div 
+                className="absolute -bottom-4 -left-4 bg-background border-2 border-eco-blue rounded-2xl px-6 py-3 shadow-lg"
+                animate={{
+                  y: [0, 10, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5
+                }}
+              >
                 <div className="flex items-center gap-2">
                   <Heart className="w-5 h-5 text-eco-blue fill-eco-blue" />
                   <span className="font-bold text-foreground">Kids Love It</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
           
           {/* Right side - Content */}
-          <div className="order-1 lg:order-2 space-y-8">
+          <motion.div 
+            className="order-1 lg:order-2 space-y-8"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+          >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-eco-green/10 to-eco-blue/10 border border-eco-green/20 rounded-full">
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-eco-green/10 to-eco-blue/10 border border-eco-green/20 rounded-full"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 }
+              }}
+            >
               <div className="w-2 h-2 bg-eco-green rounded-full animate-pulse" />
               <span className="text-sm font-semibold text-eco-green uppercase tracking-wide">
                 Interactive Learning
               </span>
-            </div>
+            </motion.div>
             
             {/* Main heading */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
               Stories That Make
               <span className="block mt-2 bg-gradient-to-r from-eco-green to-eco-blue bg-clip-text text-transparent">
                 Learning Fun
               </span>
-            </h2>
+            </motion.h2>
             
             {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
               Our interactive stories transform recycling education into magical adventures. 
               Kids make choices, solve eco-puzzles, and discover how their actions can 
               create positive change for our planet.
-            </p>
+            </motion.p>
             
             {/* Feature list */}
             <div className="grid sm:grid-cols-2 gap-4">
@@ -100,15 +166,27 @@ const InteractiveFeature = ({ onDiscoverClick }: InteractiveFeatureProps) => {
             </div>
             
             {/* CTA Button */}
-            <Button 
-              onClick={onDiscoverClick}
-              size="lg"
-              className="bg-gradient-to-r from-eco-green to-eco-blue hover:from-eco-green/90 hover:to-eco-blue/90 text-white font-bold text-lg px-10 py-7 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 }
+              }}
             >
-              <BookOpen className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              Explore All Stories
-            </Button>
-          </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  onClick={onDiscoverClick}
+                  size="lg"
+                  className="bg-gradient-to-r from-eco-green to-eco-blue hover:from-eco-green/90 hover:to-eco-blue/90 text-white font-bold text-lg px-10 py-7 rounded-2xl shadow-lg hover:shadow-xl transition-all group"
+                >
+                  <BookOpen className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  Explore All Stories
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
