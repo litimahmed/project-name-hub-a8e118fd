@@ -119,6 +119,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
+    height: 100vh;
   }
 }
 
@@ -126,14 +128,39 @@ All colors MUST be HSL.
 .snap-container {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+}
+
+.snap-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.snap-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.snap-container::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+.snap-container::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
 }
 
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* Story page flip styles */
