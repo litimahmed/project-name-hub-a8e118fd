@@ -22,28 +22,40 @@ const FicheConception = () => {
 
   const ergonomicPrinciples = [
     { 
-      name: "Loi de Fitts", 
-      icon: Mouse,
-      description: "Le temps pour atteindre une cible dépend de sa taille et de sa distance",
-      application: "Boutons larges (min 44px), zones de clic généreuses, éléments importants proches du centre d'attention"
-    },
-    { 
-      name: "Loi de Hick", 
-      icon: Brain,
-      description: "Le temps de décision augmente avec le nombre de choix",
-      application: "Maximum 6 histoires affichées, navigation simple avec 3-4 options, menus épurés"
-    },
-    { 
-      name: "Principes de Gestalt", 
-      icon: Layers,
-      description: "Le cerveau organise les éléments visuels en groupes cohérents",
-      application: "Cartes d'histoires groupées, proximité des éléments liés, similarité visuelle des catégories"
-    },
-    { 
-      name: "Heuristiques de Nielsen", 
+      name: "Utilisabilité", 
       icon: Eye,
-      description: "10 principes pour l'utilisabilité des interfaces",
-      application: "Feedback immédiat (toasts), prévention d'erreurs, cohérence visuelle, aide contextuelle"
+      description: "Interface facile à apprendre, efficace, mémorisable, avec peu d'erreurs et satisfaisante",
+      application: "Navigation intuitive, feedback immédiat, textes courts adaptés aux enfants, messages encourageants"
+    },
+    { 
+      name: "Guidage & Observabilité", 
+      icon: Mouse,
+      description: "L'utilisateur doit toujours savoir où il en est et ce qu'il peut faire",
+      application: "Barre de progression des chapitres, indicateurs visuels de l'état actuel, boutons clairs"
+    },
+    { 
+      name: "Cohérence & Familiarité", 
+      icon: Layers,
+      description: "Interface cohérente utilisant des éléments familiers pour l'utilisateur",
+      application: "Mêmes couleurs et styles sur toutes les pages, icônes reconnaissables, métaphores du monde réel"
+    },
+    { 
+      name: "Flexibilité & Adaptation", 
+      icon: Brain,
+      description: "S'adapter aux différents niveaux d'expertise et caractéristiques des utilisateurs",
+      application: "Interface adaptée aux enfants (5-12 ans), couleurs vives, boutons larges, texte simplifié"
+    },
+    { 
+      name: "Robustesse & Gestion d'erreurs", 
+      icon: Eye,
+      description: "Prévenir les erreurs et aider l'utilisateur à les corriger si elles surviennent",
+      application: "Messages d'erreur clairs et constructifs, feedback positif même en cas d'erreur au quiz"
+    },
+    { 
+      name: "Charge Cognitive (MCT)", 
+      icon: Brain,
+      description: "Limiter la charge mentale en respectant les capacités de la mémoire à court terme (5-9 items)",
+      application: "Maximum 6 histoires affichées, navigation simple, informations regroupées logiquement"
     },
   ];
 

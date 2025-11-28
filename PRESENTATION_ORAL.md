@@ -38,7 +38,7 @@ J'ai choisi ce format car les enfants apprennent mieux par le jeu et les histoir
 
 **À dire:**
 
-"Voici la page d'accueil. Vous remarquez immédiatement les **couleurs vives et joyeuses** - c'est un choix ergonomique délibéré pour attirer l'attention des enfants.
+"Voici la page d'accueil. Vous remarquez immédiatement les **couleurs vives et joyeuses** - c'est un choix ergonomique délibéré pour attirer l'attention des enfants tout en respectant leur **flexibilité cognitive**.
 
 Le titre 'Eco Heroes' et le slogan invitent l'enfant à devenir un héros de l'environnement."
 
@@ -46,13 +46,13 @@ Le titre 'Eco Heroes' et le slogan invitent l'enfant à devenir un héros de l'e
 
 **À dire:**
 
-"Cette section présente le concept d'histoires interactives. Les **animations douces** gardent l'attention sans distraire."
+"Cette section présente le concept d'histoires interactives. Les **animations douces** gardent l'attention sans surcharger la **mémoire à court terme** de l'enfant."
 
 ### Section About Us
 
 **À dire:**
 
-"Ici, j'explique la mission du projet. Le texte est **court et simple** - adapté au niveau de lecture des enfants."
+"Ici, j'explique la mission du projet. Le texte est **court et simple** - cela respecte le principe de **charge cognitive limitée** et facilite l'**apprenabilité** de l'interface."
 
 ### Section des Histoires (Grille de livres)
 
@@ -66,12 +66,12 @@ Le titre 'Eco Heroes' et le slogan invitent l'enfant à devenir un héros de l'e
 - La durée de lecture
 - Une courte description
 
-J'ai limité à 6 choix pour respecter la **Loi de Hick** - trop de choix paralyse l'enfant."
+J'ai limité à 6 choix pour respecter la capacité de la **mémoire à court terme (MCT)** - qui peut retenir 5 à 9 éléments maximum."
 
 **Points ergonomiques à mentionner:**
 
-- "Les cartes ont un **effet de survol** pour indiquer qu'elles sont cliquables"
-- "La taille des boutons respecte la **Loi de Fitts** - assez grands pour les petits doigts"
+- "Les cartes ont un **effet de survol** pour le **guidage visuel** - l'utilisateur sait qu'elles sont cliquables"
+- "La taille des boutons est **adaptée aux enfants** - c'est le principe de **flexibilité** pour notre public cible"
 
 ---
 
@@ -85,7 +85,7 @@ J'ai limité à 6 choix pour respecter la **Loi de Hick** - trop de choix paraly
 
 "Passons maintenant à la lecture. J'ai choisi 'Captain Earth Saves the Day' comme exemple.
 
-Observez la **barre de progression** en haut - elle montre à l'enfant où il en est dans l'histoire. C'est important pour maintenir sa motivation."
+Observez la **barre de progression** en haut - c'est le principe d'**observabilité**: l'enfant sait toujours où il en est dans l'histoire. C'est important pour maintenir sa motivation."
 
 ### Navigation entre chapitres
 
@@ -98,7 +98,7 @@ Observez la **barre de progression** en haut - elle montre à l'enfant où il en
 - **Flèche droite** pour avancer
 - Les **indicateurs de chapitre** permettent de sauter à un chapitre spécifique
 
-C'est du **design intuitif** - même un enfant de 5 ans peut comprendre."
+C'est du **guidage intuitif** - même un enfant de 5 ans peut comprendre. L'interface est **cohérente** avec ce qu'il connaît déjà."
 
 ### Le contenu de l'histoire
 
@@ -107,17 +107,17 @@ C'est du **design intuitif** - même un enfant de 5 ans peut comprendre."
 **À dire:**
 
 "Chaque chapitre contient:
-- Une **illustration colorée** qui occupe l'attention
+- Une **illustration colorée** qui attire l'attention
 - Un **texte court** avec un vocabulaire adapté
 - Des **phrases simples** de 10-15 mots maximum
 
-L'histoire enseigne que **les petites actions quotidiennes** comme recycler ou économiser l'eau font une grande différence."
+Cela respecte la **charge cognitive** des enfants et favorise l'**apprenabilité**."
 
 ### Les animations
 
 **À dire:**
 
-"Remarquez les **transitions fluides** entre les pages. J'utilise Framer Motion pour créer des animations douces qui ne fatiguent pas les yeux."
+"Remarquez les **transitions fluides** entre les pages. J'utilise Framer Motion pour créer des animations douces - cela améliore la **satisfaction** de l'utilisateur sans le distraire."
 
 ---
 
@@ -132,8 +132,8 @@ L'histoire enseigne que **les petites actions quotidiennes** comme recycler ou �
 "À la fin de chaque histoire, un **quiz interactif** teste la compréhension de l'enfant.
 
 Les questions sont à choix multiples avec:
-- **Feedback immédiat** - vert pour correct, rouge pour incorrect
-- **Messages encourageants** - même en cas d'erreur, on reste positif
+- **Feedback immédiat** - vert pour correct, rouge pour incorrect (c'est l'**observabilité**)
+- **Messages encourageants** - même en cas d'erreur, on reste positif (c'est la **gestion des erreurs**)
 - Un **score final** pour motiver à recommencer
 
 C'est de la **gamification éducative** - l'enfant apprend sans s'en rendre compte."
@@ -144,7 +144,7 @@ C'est de la **gamification éducative** - l'enfant apprend sans s'en rendre comp
 
 **À dire:**
 
-"L'enfant peut aussi **noter l'histoire** avec des étoiles. Ça lui donne un sentiment de contrôle et d'engagement."
+"L'enfant peut aussi **noter l'histoire** avec des étoiles. Ça lui donne un sentiment de contrôle et améliore sa **satisfaction**."
 
 ### Bouton retour en haut
 
@@ -152,7 +152,7 @@ C'est de la **gamification éducative** - l'enfant apprend sans s'en rendre comp
 
 **À dire:**
 
-"Ce petit bouton permet de **remonter instantanément** - une fonctionnalité d'accessibilité importante pour la navigation."
+"Ce petit bouton permet de **remonter instantanément** - c'est du **guidage** pour faciliter la navigation."
 
 ### Mode sombre/clair
 
@@ -160,7 +160,7 @@ C'est de la **gamification éducative** - l'enfant apprend sans s'en rendre comp
 
 **À dire:**
 
-"L'application supporte le **mode sombre** pour la lecture en soirée - ça protège les yeux des enfants."
+"L'application supporte le **mode sombre** pour la lecture en soirée - c'est de la **flexibilité** qui s'adapte aux besoins de l'utilisateur."
 
 ---
 
@@ -170,12 +170,14 @@ C'est de la **gamification éducative** - l'enfant apprend sans s'en rendre comp
 
 **À dire:**
 
-"Pour résumer, Eco Heroes applique plusieurs **principes ergonomiques** du cours:
+"Pour résumer, Eco Heroes applique plusieurs **principes ergonomiques** vus en cours:
 
-1. **Loi de Fitts** - boutons larges et accessibles
-2. **Loi de Hick** - choix limités et clairs
-3. **Principes de Gestalt** - regroupement visuel cohérent
-4. **Heuristiques de Nielsen** - feedback immédiat, prévention d'erreurs
+1. **Utilisabilité** - interface facile à apprendre et satisfaisante
+2. **Guidage et Observabilité** - l'utilisateur sait toujours où il est
+3. **Cohérence et Familiarité** - design uniforme et reconnaissable
+4. **Flexibilité** - adaptée au public cible (enfants 5-12 ans)
+5. **Robustesse** - feedback positif et gestion des erreurs
+6. **Charge cognitive limitée** - respect de la MCT avec 6 histoires max
 
 Le projet utilise **React, TypeScript et Tailwind CSS** pour une expérience moderne et performante.
 
@@ -198,29 +200,30 @@ Merci pour votre attention. Avez-vous des questions?"
 - ⏸️ **Faites des pauses** entre les sections
 
 ### Mots-clés à retenir:
-- Ergonomie
-- Accessibilité
-- Gamification
+- Utilisabilité
+- Guidage / Observabilité
+- Cohérence / Familiarité
+- Flexibilité / Adaptation
+- Robustesse / Gestion d'erreurs
+- Charge cognitive / MCT
+- Apprenabilité
 - Feedback immédiat
-- Design adaptatif
-- Principes de Gestalt
-- Loi de Fitts / Hick
 
 ---
 
 ## 🆘 QUESTIONS POSSIBLES ET RÉPONSES
 
 **Q: Pourquoi avoir choisi les enfants comme cible?**
-> "Les enfants sont les citoyens de demain. En les sensibilisant tôt, on crée des habitudes durables."
+> "Les enfants sont les citoyens de demain. En les sensibilisant tôt, on crée des habitudes durables. De plus, cela m'a permis d'appliquer le principe de **flexibilité** en adaptant l'interface à un public spécifique."
 
 **Q: Quelles technologies avez-vous utilisées?**
 > "React 18 pour l'interface, TypeScript pour la fiabilité du code, Tailwind CSS pour le design, et Framer Motion pour les animations."
 
-**Q: Comment avez-vous testé l'ergonomie?**
-> "J'ai suivi les principes vus en cours: contraste des couleurs, taille des éléments interactifs, et simplicité de navigation."
+**Q: Comment avez-vous appliqué l'ergonomie?**
+> "J'ai suivi les principes vus en cours: **utilisabilité**, **guidage**, **cohérence**, **flexibilité**, et j'ai limité la **charge cognitive** avec maximum 6 histoires affichées."
 
 **Q: Quelles améliorations futures?**
-> "J'aimerais ajouter la narration audio et le support multilingue (arabe, français)."
+> "J'aimerais ajouter la narration audio pour améliorer l'**apprenabilité** des enfants qui ne savent pas encore lire, et le support multilingue (arabe, français) pour plus de **flexibilité**."
 
 ---
 
