@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
-import { BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ChapterProgressProps {
@@ -8,15 +6,14 @@ interface ChapterProgressProps {
 }
 
 const ChapterProgress = ({ totalChapters }: ChapterProgressProps) => {
-  const [currentChapter, setCurrentChapter] = useState(1);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentChapter, setCurrentChapter] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("article section");
       if (!sections.length) return;
 
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
       
       // Find which chapter is currently in view
       let chapterIndex = 0;
@@ -27,11 +24,7 @@ const ChapterProgress = ({ totalChapters }: ChapterProgressProps) => {
         }
       });
 
-      setCurrentChapter(Math.min(chapterIndex + 1, totalChapters));
-      
-      // Calculate overall progress percentage
-      const progress = Math.min(((chapterIndex + 1) / totalChapters) * 100, 100);
-      setScrollProgress(progress);
+      setCurrentChapter(Math.min(chapterIndex, totalChapters - 1));
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -41,67 +34,73 @@ const ChapterProgress = ({ totalChapters }: ChapterProgressProps) => {
   }, [totalChapters]);
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 w-full max-w-md px-4">
-      <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/50 overflow-hidden">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-eco-green/10 via-eco-blue/10 to-eco-purple/10 opacity-50" />
+    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
+      <div className="relative">
+        {/* Background line */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-muted/30" />
         
-        <div className="relative p-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded-full bg-gradient-to-br from-eco-green to-eco-blue">
-                <BookOpen className="h-4 w-4 text-white" />
+        {/* Filled progress line */}
+        <div 
+          className="absolute left-1/2 -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-eco-green via-eco-blue to-eco-purple transition-all duration-700 ease-out rounded-full"
+          style={{ 
+            height: `${(currentChapter / (totalChapters - 1)) * 100}%`,
+          }}
+        />
+
+        {/* Chapter circles */}
+        <div className="relative flex flex-col gap-12 py-4">
+          {Array.from({ length: totalChapters }, (_, index) => {
+            const isActive = index <= currentChapter;
+            const isCurrent = index === currentChapter;
+            
+            return (
+              <div
+                key={index}
+                className="relative flex items-center justify-center"
+              >
+                {/* Outer glow ring for active chapters */}
+                {isActive && (
+                  <div className={cn(
+                    "absolute inset-0 rounded-full transition-all duration-700",
+                    isCurrent 
+                      ? "bg-gradient-to-br from-eco-green via-eco-blue to-eco-purple opacity-40 blur-xl scale-150 animate-pulse" 
+                      : "bg-gradient-to-br from-eco-green to-eco-blue opacity-20 blur-lg scale-125"
+                  )} />
+                )}
+                
+                {/* Circle */}
+                <div
+                  className={cn(
+                    "relative w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold text-sm transition-all duration-700 shadow-lg",
+                    isActive
+                      ? "border-transparent bg-gradient-to-br from-eco-green via-eco-blue to-eco-purple text-white scale-110"
+                      : "border-muted bg-background/95 backdrop-blur text-muted-foreground scale-100",
+                    isCurrent && "animate-[pulse_1.5s_ease-in-out_3]"
+                  )}
+                >
+                  {/* Inner gradient overlay for active */}
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+                  )}
+                  
+                  <span className="relative z-10">{index + 1}</span>
+                </div>
+
+                {/* Chapter label tooltip */}
+                <div
+                  className={cn(
+                    "absolute left-full ml-4 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-500",
+                    isActive
+                      ? "bg-gradient-to-r from-eco-green to-eco-blue text-white opacity-100 translate-x-0 shadow-lg"
+                      : "bg-muted text-muted-foreground opacity-0 -translate-x-2"
+                  )}
+                >
+                  Chapter {index + 1}
+                </div>
               </div>
-              <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-                Reading Progress
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <span className={cn(
-                "text-2xl font-bold bg-gradient-to-r from-eco-green via-eco-blue to-eco-purple bg-clip-text text-transparent transition-all duration-500",
-                currentChapter === totalChapters && "animate-pulse"
-              )}>
-                {currentChapter}
-              </span>
-              <span className="text-lg text-muted-foreground">/</span>
-              <span className="text-lg font-semibold text-muted-foreground">
-                {totalChapters}
-              </span>
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="space-y-2">
-            <Progress 
-              value={scrollProgress} 
-              className="h-3 bg-muted/50"
-            />
-            
-            {/* Chapter Text */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-muted-foreground font-medium">
-                Chapter {currentChapter}
-              </span>
-              <span className="text-eco-green font-bold">
-                {scrollProgress.toFixed(0)}% Complete
-              </span>
-            </div>
-          </div>
-
-          {/* Milestone celebration */}
-          {currentChapter === totalChapters && scrollProgress >= 95 && (
-            <div className="mt-4 pt-4 border-t border-border/50 text-center">
-              <p className="text-sm font-semibold text-eco-green animate-pulse">
-                🌟 Almost finished! Keep reading! 🌟
-              </p>
-            </div>
-          )}
+            );
+          })}
         </div>
-
-        {/* Bottom accent line */}
-        <div className="h-1 bg-gradient-to-r from-eco-green via-eco-blue to-eco-purple" />
       </div>
     </div>
   );
