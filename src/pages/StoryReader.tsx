@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Volume2, Share2, Clock, Tag, Download, Edit, Star } from "lucide-react";
+import { ArrowLeft, Volume2, Share2, Clock, Tag, Download, Edit, Star, ArrowUp } from "lucide-react";
 import { toast } from "sonner";
 import { storyContent } from "@/data/storyContent";
 import StoryRating from "@/components/StoryRating";
@@ -79,6 +79,25 @@ const StoryReader = () => {
 
   // Show chapter progress only for Captain Earth story (id: 2)
   const showChapterProgress = story.id === 2;
+
+  // Scroll to top button state
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -384,6 +403,19 @@ const StoryReader = () => {
       {story.quiz && story.quiz.length > 0 && (
         <StoryQuiz questions={story.quiz} storyTitle={story.title} />
       )}
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-foreground text-background flex items-center justify-center shadow-lg transition-all duration-500 ease-out hover:scale-110 ${
+          showScrollTop
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-16 pointer-events-none"
+        }`}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="h-6 w-6" />
+      </button>
     </div>
   );
 };
