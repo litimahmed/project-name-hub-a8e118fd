@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-eco-adventure.jpg";
+import heroImage from "@/assets/hero-eco-adventure-new.jpg";
 import DecorativeBlobs from "@/components/DecorativeBlobs";
 
 const Hero = () => {
