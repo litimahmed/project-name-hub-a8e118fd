@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { BookOpen, Menu, X, Search } from "lucide-react";
+import { BookOpen, Menu, X, Search, FileText } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchDialog from "@/components/SearchDialog";
 
@@ -20,6 +21,7 @@ interface HeaderProps {
 const Header = ({ books, onBookClick }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -58,6 +60,13 @@ const Header = ({ books, onBookClick }: HeaderProps) => {
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
               Contact Us
+            </button>
+            <button
+              onClick={() => navigate('/conception')}
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium flex items-center gap-1"
+            >
+              <FileText className="w-4 h-4" />
+              Fiche
             </button>
           </nav>
 
@@ -119,6 +128,16 @@ const Header = ({ books, onBookClick }: HeaderProps) => {
               className="block w-full text-left px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors font-medium"
             >
               Contact Us
+            </button>
+            <button
+              onClick={() => {
+                navigate('/conception');
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full text-left px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors font-medium flex items-center gap-2"
+            >
+              <FileText className="w-4 h-4" />
+              Fiche de Conception
             </button>
           </nav>
         )}
