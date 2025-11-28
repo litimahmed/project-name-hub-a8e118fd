@@ -103,7 +103,7 @@ const Index = () => {
       </SnapSection>
       
       <SnapSection id="stories-section" index={3}>
-        <section className="relative py-12 px-4 overflow-hidden flex items-center min-h-screen">
+        <section className="relative py-12 px-4 overflow-hidden min-h-screen flex flex-col justify-start pt-20">
           {/* Subtle blobs for the story section */}
           <div className="absolute top-10 left-1/4 w-72 h-72 bg-eco-orange/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-eco-purple/15 rounded-full blur-3xl pointer-events-none" />

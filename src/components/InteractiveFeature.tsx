@@ -48,44 +48,6 @@ const InteractiveFeature = ({ onDiscoverClick }: InteractiveFeatureProps) => {
                   className="w-full h-auto object-contain"
                 />
               </motion.div>
-              
-              {/* Floating badges */}
-              <motion.div 
-                className="absolute -top-6 -right-6 bg-background border-2 border-eco-green rounded-2xl px-6 py-3 shadow-lg"
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, 0]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-eco-green" />
-                  <span className="font-bold text-foreground">Interactive</span>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -bottom-4 -left-4 bg-background border-2 border-eco-blue rounded-2xl px-6 py-3 shadow-lg"
-                animate={{
-                  y: [0, 10, 0],
-                  rotate: [0, -5, 0]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.5
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <Heart className="w-5 h-5 text-eco-blue fill-eco-blue" />
-                  <span className="font-bold text-foreground">Kids Love It</span>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
           
