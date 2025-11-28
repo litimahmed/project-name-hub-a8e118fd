@@ -8,6 +8,7 @@ import StoryRating from "@/components/StoryRating";
 import StoryQuiz from "@/components/StoryQuiz";
 import MusicPlayer from "@/components/MusicPlayer";
 import { useMusicPlayer } from "@/hooks/useMusicPlayer";
+import ChapterProgress from "@/components/ChapterProgress";
 
 const StoryReader = () => {
   const { id } = useParams();
@@ -76,8 +77,16 @@ const StoryReader = () => {
     toast.success("Story customization coming soon!");
   };
 
+  // Show chapter progress only for Captain Earth story (id: 2)
+  const showChapterProgress = story.id === 2;
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Chapter Progress Indicator */}
+      {showChapterProgress && (
+        <ChapterProgress totalChapters={story.pages.length} />
+      )}
+
       {/* Fixed Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-3">
