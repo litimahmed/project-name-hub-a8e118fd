@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
-import { BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ChapterProgressProps {
@@ -41,67 +39,73 @@ const ChapterProgress = ({ totalChapters }: ChapterProgressProps) => {
   }, [totalChapters]);
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 w-full max-w-md px-4">
-      <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/50 overflow-hidden">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-eco-green/10 via-eco-blue/10 to-eco-purple/10 opacity-50" />
-        
-        <div className="relative p-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded-full bg-gradient-to-br from-eco-green to-eco-blue">
-                <BookOpen className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-                Reading Progress
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-2">
+    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40">
+      <div className="flex flex-col items-end gap-8">
+        {/* Chapter counter - brutalist style */}
+        <div className="relative">
+          <div className="text-right">
+            <div className="relative overflow-hidden">
               <span className={cn(
-                "text-2xl font-bold bg-gradient-to-r from-eco-green via-eco-blue to-eco-purple bg-clip-text text-transparent transition-all duration-500",
+                "block text-8xl font-black tabular-nums tracking-tighter text-foreground transition-all duration-700 ease-out",
                 currentChapter === totalChapters && "animate-pulse"
               )}>
-                {currentChapter}
+                {currentChapter.toString().padStart(2, '0')}
               </span>
-              <span className="text-lg text-muted-foreground">/</span>
-              <span className="text-lg font-semibold text-muted-foreground">
-                {totalChapters}
+            </div>
+            <div className="flex items-baseline justify-end gap-2 mt-2">
+              <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+                of
+              </span>
+              <span className="text-2xl font-bold text-muted-foreground/60 tabular-nums">
+                {totalChapters.toString().padStart(2, '0')}
               </span>
             </div>
           </div>
-
-          {/* Progress Bar */}
-          <div className="space-y-2">
-            <Progress 
-              value={scrollProgress} 
-              className="h-3 bg-muted/50"
-            />
-            
-            {/* Chapter Text */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-muted-foreground font-medium">
-                Chapter {currentChapter}
-              </span>
-              <span className="text-eco-green font-bold">
-                {scrollProgress.toFixed(0)}% Complete
-              </span>
-            </div>
-          </div>
-
-          {/* Milestone celebration */}
-          {currentChapter === totalChapters && scrollProgress >= 95 && (
-            <div className="mt-4 pt-4 border-t border-border/50 text-center">
-              <p className="text-sm font-semibold text-eco-green animate-pulse">
-                🌟 Almost finished! Keep reading! 🌟
-              </p>
-            </div>
-          )}
         </div>
 
-        {/* Bottom accent line */}
-        <div className="h-1 bg-gradient-to-r from-eco-green via-eco-blue to-eco-purple" />
+        {/* Vertical progress line */}
+        <div className="relative h-64 w-0.5 bg-border/30">
+          {/* Filled portion */}
+          <div 
+            className="absolute bottom-0 left-0 w-full bg-foreground transition-all duration-700 ease-out"
+            style={{ height: `${scrollProgress}%` }}
+          />
+          
+          {/* Chapter markers */}
+          <div className="absolute inset-0">
+            {Array.from({ length: totalChapters }).map((_, index) => {
+              const markerPosition = ((index + 1) / totalChapters) * 100;
+              const isActive = currentChapter > index;
+              const isCurrent = currentChapter === index + 1;
+              
+              return (
+                <div
+                  key={index}
+                  className="absolute left-1/2 -translate-x-1/2 transition-all duration-500"
+                  style={{ bottom: `${markerPosition}%` }}
+                >
+                  <div className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-500",
+                    isActive ? "bg-foreground scale-150" : "bg-border",
+                    isCurrent && "ring-4 ring-foreground/20 scale-[2]"
+                  )} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Percentage display */}
+        <div className="text-right">
+          <span className="block text-sm font-mono text-muted-foreground tabular-nums">
+            {scrollProgress.toFixed(0)}%
+          </span>
+          {currentChapter === totalChapters && scrollProgress >= 95 && (
+            <span className="block text-xs font-medium text-foreground mt-2 animate-pulse">
+              Almost there
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
